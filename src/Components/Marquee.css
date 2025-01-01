@@ -1,0 +1,17 @@
+.marquee-container {
+    background-color: #f4a261;
+    padding: 10px 0;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .marquee-text {
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
