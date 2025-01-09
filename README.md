@@ -40,4 +40,4 @@ cd shopnow
 ## Live Demo
 
 You can view the live version of the website here:  
-[**ShopNow E-Commerce Website**](https://your-live-link.com)
+[**ShopNow E-Commerce Website**](https://shop-now-frontend-one.vercel.app/)
