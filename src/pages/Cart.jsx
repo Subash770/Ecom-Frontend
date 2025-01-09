@@ -1,11 +1,12 @@
 import React from "react";
-import { Footer, Navbar } from "../components";
+import { Footer, Navigationbar } from "../components";
 import { useSelector, useDispatch } from "react-redux";
 import { addCart, delCart } from "../redux/action";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const state = useSelector((state) => state.handleCart);
+  // Default to an empty array if state is undefined or null
+  const state = useSelector((state) => state.handleCart) || [];
   const dispatch = useDispatch();
 
   const EmptyCart = () => {
@@ -34,13 +35,15 @@ const Cart = () => {
     let subtotal = 0;
     let shipping = 30.0;
     let totalItems = 0;
-    state.map((item) => {
-      return (subtotal += item.price * item.qty);
-    });
+    
+    // Ensure state is properly defined and not empty before using map
+    if (state.length > 0) {
+      state.map((item) => {
+        subtotal += item.price * item.qty;
+        totalItems += item.qty;
+      });
+    }
 
-    state.map((item) => {
-      return (totalItems += item.qty);
-    });
     return (
       <>
         <section className="h-100 gradient-custom">
@@ -63,7 +66,6 @@ const Cart = () => {
                               >
                                 <img
                                   src={item.image}
-                                  // className="w-100"
                                   alt={item.title}
                                   width={100}
                                   height={75}
@@ -75,8 +77,6 @@ const Cart = () => {
                               <p>
                                 <strong>{item.title}</strong>
                               </p>
-                              {/* <p>Color: blue</p>
-                              <p>Size: M</p> */}
                             </div>
 
                             <div className="col-lg-4 col-md-6">
@@ -86,9 +86,7 @@ const Cart = () => {
                               >
                                 <button
                                   className="btn px-3"
-                                  onClick={() => {
-                                    removeItem(item);
-                                  }}
+                                  onClick={() => removeItem(item)}
                                 >
                                   <i className="fas fa-minus"></i>
                                 </button>
@@ -97,9 +95,7 @@ const Cart = () => {
 
                                 <button
                                   className="btn px-3"
-                                  onClick={() => {
-                                    addItem(item);
-                                  }}
+                                  onClick={() => addItem(item)}
                                 >
                                   <i className="fas fa-plus"></i>
                                 </button>
@@ -163,7 +159,7 @@ const Cart = () => {
 
   return (
     <>
-      <Navbar />
+      <Navigationbar />
       <div className="container my-3 py-3">
         <h1 className="text-center">Cart</h1>
         <hr />

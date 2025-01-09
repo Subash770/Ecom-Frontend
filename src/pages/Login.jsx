@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Footer, Navbar } from "../components";
+import { Footer, Navigationbar } from "../components";
 
 const Login = () => {
   return (
     <>
-      <Navbar />
+      <Navigationbar />
       <div className="container my-3 py-3">
         <h1 className="text-center">Login</h1>
         <hr />

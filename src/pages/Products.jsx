@@ -1,10 +1,10 @@
 import React from 'react'
-import { Footer, Navbar, Product } from "../components"
+import { Footer, Navigationbar, Product } from "../components"
 
 const Products = () => {
   return (
     <>
-      <Navbar />
+      <Navigationbar />
       <Product />
       <Footer />
     </>
